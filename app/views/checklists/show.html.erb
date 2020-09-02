@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @checklist.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @checklist.description %>
+</p>
+
+<h2>Questions:</h2>
+<%= render @checklist.questions %>
+
+<h2>Add a question:</h2>
+<%= form_with(model: [ @checklist, @checklist.questions.build ], local: true) do |form| %>
+<p>
+  <%= form.label :title %><br>
+  <%= form.text_field :title %>
+</p>
+<p>
+  <%= form.label :description %><br>
+  <%= form.text_area :description %>
+</p>
+<p>
+  <%= form.submit %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_checklist_path(@checklist) %> |
+<%= link_to 'All Checklists', checklists_path %>
