@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Materializecss - modern responsive front-end framework based on Material Design.
+gem 'materialize-sass', '~> 1.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use postgresql as the database for Active Record
@@ -18,8 +20,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Pagination library for Rails, Sinatra, Merb, DataMapper, and more
 gem 'will_paginate', '~> 3.1.0'
-# Materializecss - modern responsive front-end framework based on Material Design.
-gem 'materialize-sass', '~> 1.0.0'
 # A simple Rails wrapper for Google Material Icons
 gem 'material_icons'
 

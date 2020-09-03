@@ -1,32 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="card section scrollspy" id="badges-demo">
+  <div class="card-content">
+    <p id="notice"><%= notice %></p>
 
-<h1>Checklists</h1>
+    <h5>Checklists</h5>
+    <div class="collection">
+      <table>
+        <thead>
+          <tr class="highlight">
+            <th>Title</th>
+            <th>Description</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr class="highlight">
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @checklists.each do |checklist| %>
+          <tr>
+            <td><b><%= link_to checklist.title, checklist %><b></td>
+            <td><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div>
+        <br>
 
-  <tbody>
-    <% @checklists.each do |checklist| %>
-    <tr>
-      <td><b><%= link_to checklist.title, checklist %><b></td>
-      <td><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+        <%= link_to 'New Checklist', new_checklist_path, class: 'waves-effect waves-light btn' %>
 
-<br>
+        <br>
 
-<%= link_to 'New Checklist', new_checklist_path, class: 'waves-effect waves-light btn' %>
+        <div class="m-auto">
+          <%= will_paginate @checklist, previous_label: "Older", next_label: "Newer",  class: 'waves-effect waves-light btn' %>
+        </div>
 
-<br>
-
-<div class="m-auto">
-  <%= will_paginate @checklist, previous_label: "Older", next_label: "Newer",  class: 'waves-effect waves-light btn' %>
-</div>
+      </div>
+    </div>

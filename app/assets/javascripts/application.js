@@ -14,5 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+//= require turbolinks  
 //= require materialize-sprockets
-//= require materialize/extras/nouislider
