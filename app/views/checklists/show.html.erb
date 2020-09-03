@@ -1,17 +1,23 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title"> <%= @checklist.title %></span>
+        <p> <%= @checklist.description %></p>
+        <ul class="collection">
+          <span class="title"> Questions: </span>
+            <%= render @checklist.questions %>
+        </ul>
+      </div>
+      <div class="card-action">
+        <%= link_to 'Edit', edit_checklist_path(@checklist) %> |
+        <%= link_to 'All Checklists', checklists_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @checklist.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @checklist.description %>
-</p>
-
-<h2>Questions:</h2>
-<%= render @checklist.questions %>
 
 <h2>Add a question:</h2>
 <%= form_with(model: [ @checklist, @checklist.questions.build ], local: true) do |form| %>
@@ -27,6 +33,3 @@
   <%= form.submit %>
 </p>
 <% end %>
-
-<%= link_to 'Edit', edit_checklist_path(@checklist) %> |
-<%= link_to 'All Checklists', checklists_path %>

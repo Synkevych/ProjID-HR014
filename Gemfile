@@ -15,8 +15,13 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
+
 # Pagination library for Rails, Sinatra, Merb, DataMapper, and more
 gem 'will_paginate', '~> 3.1.0'
+# Materializecss - modern responsive front-end framework based on Material Design.
+gem 'materialize-sass', '~> 1.0.0'
+# A simple Rails wrapper for Google Material Icons
+gem 'material_icons'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

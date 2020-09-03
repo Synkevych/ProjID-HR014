@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ProjIDHr014</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>ProjIDHr014</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/icon?family=Material\Icons" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Lifemanager</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#!">Home</a></li>
+        <li><a href="#!">Contacts</a></li>
+        <li><a href="#!">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
     <%= yield %>
-  </body>
+  </main>
+
+  <footer class="page-footer pt-0">
+    <div class="footer-copyright">
+      <div class="container center">
+        © 2014 Copyright 2020
+      </div>
+    </div>
+  </footer>
+
+</body>
+
 </html>
