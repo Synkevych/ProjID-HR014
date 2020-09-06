@@ -12,16 +12,17 @@
 <% end %>
 
 <div class="field">
-  <%= form.label :title %>
-  <%= form.text_field :title %>
+  <%= form.label :title, "Title"%>
+  <%= form.text_field :title, data: { length:40 }, id: 'input_text', placeholder: "Do you create applications?"%>
 </div>
 
 <div class="field">
-  <%= form.label :description %>
-  <%= form.text_area :description %>
+  <%= form.label :description%>
+  <%= form.text_area :description, rows: 3, placeholder: "With JavaScript language."%>
 </div>
 
 <div class="actions">
-  <%= form.submit  class: 'waves-effect waves-light btn'%>
+  <%= form.submit  class: 'waves-effect waves-light btn teal lighten-2'%>
+  <%= link_to 'Cancel', checklists_path, class: 'waves-effect waves-light btn red darken-1' %>
 </div>
 <% end %>

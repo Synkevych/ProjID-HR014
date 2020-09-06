@@ -10,10 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-//= require turbolinks  
 //= require materialize-sprockets
+//= require materialize/extras/nouislider
+
+$(document).ready(function () {
+  $('input#input_text, input#input_answer').characterCounter();
+});
+
+$(document).ready(function () {
+  $('.modal').modal();
+});

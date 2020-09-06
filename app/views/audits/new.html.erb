@@ -7,19 +7,15 @@
         <hr />
         <% @checklist.questions.any?  do %>
         <ul class="card-body">
-          <span class="card-title"> Questions: </span>
+          <span class="card-title">Answer <%= @checklist.cout_questions %> Questions:</span>
           <%= render @checklist.questions %>
         </ul>
         <% end %>
       </div>
       <div class="card-action">
         <%= link_to 'Edit', edit_checklist_path(@checklist), class: 'waves-effect waves-light btn teal lighten-2' %>
-        <%= link_to 'Delete', @checklist, method: :delete,
-            data: { confirm: 'Are you sure?' },
-            class: 'waves-effect waves-light btn red darken-1' %>
-        <%= link_to 'All Checklists', checklists_path, class: 'waves-effect waves-light btn teal lighten-2'%>
+        <%= link_to 'Cancel', checklists_path, class: 'waves-effect waves-light btn  red darken-1'%>
       </div>
     </div>
   </div>
 </div>
-<%= render "questions/form" %>

@@ -22,6 +22,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate', '~> 3.1.0'
 # A simple Rails wrapper for Google Material Icons
 gem 'material_icons'
+# jQuery for materialize-sass UI plagin
+gem 'jquery-rails'
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
