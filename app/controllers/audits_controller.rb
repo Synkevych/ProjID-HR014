@@ -5,6 +5,14 @@ class AuditsController < ApplicationController
     @audits = Checklist.all
       .paginate(page: params[:page])
   end
+  
+  def show
+  end
+  
+  def new
+    @show_form = true
+    @checklist = Checklist.find(params[:checklist_id])
+  end
 
   def create
     @answer = @checklist.questions.new(question_params)
@@ -13,13 +21,6 @@ class AuditsController < ApplicationController
     else
       flash[:error] = "Something went wrong, the comment wasn't deleted"
     end
-  end
-  
-  def new
-    @checklist = Checklist.find(params[:checklist_id])
-  end
-  
-  def show
   end
   
   private
