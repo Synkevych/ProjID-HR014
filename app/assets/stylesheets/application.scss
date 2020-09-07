@@ -2,7 +2,7 @@
 
 @import "materialize/components/color-variables";
 $primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+$secondary-color: color("teal", "lighten-2") !default;
 @import 'materialize';
 
 @import "materialize/extras/nouislider";

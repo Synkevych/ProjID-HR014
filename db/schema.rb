@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_103209) do
+ActiveRecord::Schema.define(version: 2020_09_06_143533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2020_09_05_103209) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "audits", force: :cascade do |t|
+    t.bigint "checklists_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checklists_id"], name: "index_audits_on_checklists_id"
   end
 
   create_table "checklists", force: :cascade do |t|
@@ -39,5 +46,6 @@ ActiveRecord::Schema.define(version: 2020_09_05_103209) do
     t.index ["checklist_id"], name: "index_questions_on_checklist_id"
   end
 
+  add_foreign_key "audits", "checklists", column: "checklists_id"
   add_foreign_key "questions", "checklists"
 end

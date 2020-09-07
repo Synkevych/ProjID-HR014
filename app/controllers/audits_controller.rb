@@ -1,8 +1,8 @@
 class AuditsController < ApplicationController
-   before_action :set_checklist, only: [:index, :create]
+   before_action :set_checklists, only: [:create, :index]
 
   def index
-    @audits = Checklist.all
+    @audits = Audit.all
       .paginate(page: params[:page])
   end
   
@@ -15,16 +15,17 @@ class AuditsController < ApplicationController
   end
 
   def create
-    @answer = @checklist.questions.new(question_params)
-    if @question.save
-      redirect_to checklist_path(@checklist)
+    @checklist = Checklist.find(params[:checklist_id])
+    @audit = @checklist.audits.build
+    if @audit.save
+      redirect_to checklist_audits_path(@checklist)
     else
       flash[:error] = "Something went wrong, the comment wasn't deleted"
     end
   end
   
   private
-  def set_checklist
+  def set_checklists
     @checklists = Checklist.all
       .paginate(page: params[:page])
   end

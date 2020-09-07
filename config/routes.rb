@@ -2,12 +2,14 @@ Rails.application.routes.draw do
   root 'checklists#index'
   
   resources :checklists do
-    resources :questions do
-      resources :answers, exept: [:show]
+    resources :questions, only: [:create] do
+      resources :answers, only: [:create, :destroy]
     end
-    resources :audits
   end
 
+  resources :checklists do
+    resources :audits
+  end
+  
   resources :audits, only: [:index]
-
 end

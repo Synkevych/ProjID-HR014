@@ -13,7 +13,8 @@
         <% end %>
       </div>
       <div class="card-action">
-        <%= link_to 'Cancel', checklists_path, class: 'waves-effect waves-light btn  red darken-1'%>
+        <%= button_to 'Create', {controller: "audits", action: "create", checklists_id: @checklist.id}, method: :post, class: 'waves-effect waves-light btn' %>
+        <%= link_to 'Cancel', checklists_path, class: 'waves-effect waves-light btn red darken-1'%>
       </div>
     </div>
   </div>

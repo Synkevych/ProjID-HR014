@@ -16,9 +16,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @checklists.each do |checklist| %>
+        <% @audits.each do |checklist| %>
         <tr class=" odd">
-          <td valign="top" colspan="3" class="dataTables_empty"><b><%= link_to checklist.title, checklist %><b></td>
+          <td valign="top" colspan="3" class="dataTables_empty"><b><%= link_to checklist.title, checlist.checklist.title %><b></td>
           <td valign="top" colspan="2" class="dataTables_empty"><b><%= time_ago_in_words(checklist.updated_at) %><b></td>
           <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Edit', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -49,7 +49,7 @@
       <h5>Choose one of the checklists:</h5>
     </div>
     <div class="collection with-header">
-      <%= render @checklists %>
+         <%= render @checklists %>
     </div>
   </div>
   <div class="modal-footer">

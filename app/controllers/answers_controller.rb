@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
   end
   
   private
-  # Use callbacks to share common setup or constraints between actions.
+  # callbacks
   def find_checklist!
     @checklist = Checklist.find(params[:checklist_id])
   end

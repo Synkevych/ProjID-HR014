@@ -6,14 +6,14 @@
         <%= form_with(model: [ @checklist, question, question.answers.build ], local: true) do |form| %>
         <p>
           <%= form.label :answer %><br>
-          <%= form.select :answer, %w[yes no NA] %>
+           <%= form.text_field :answer, data: { length:40 }, id: 'input_text', placeholder: "Do you create applications?"%>
         </p>
         <p>
           <%= form.label :comment %><br>
           <%= form.text_area :comment %>
         </p>
         <p>
-          <%= form.submit class: 'waves-effect waves-light btn teal lighten-2'%>
+          <%= form.submit class: 'waves-effect waves-light btn'%>
         </p>
         <% end %>
       </div>
