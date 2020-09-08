@@ -1,18 +1,18 @@
 class QuestionsController < ApplicationController
-  before_action :set_checklist, only: [:create]
+  before_action :find_checklist!, only: [:create]
 
   def create
     @question = @checklist.questions.new(question_params)
     if @question.save
       redirect_to checklist_path(@checklist)
     else
-      flash[:error] = "Something went wrong, the comment wasn't deleted"
+      flash[:error] = "Something went wrong, the question wasn't created"
     end
   end
 
   private
   # callbacks
-  def set_checklist
+  def find_checklist!
     @checklist = Checklist.find(params[:checklist_id])
   end
     

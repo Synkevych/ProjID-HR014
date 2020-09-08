@@ -1,5 +1,5 @@
 class ChecklistsController < ApplicationController
-  before_action :set_checklist, only: [:show, :edit, :update, :destroy]
+  before_action :set_checklist!, only: [:show, :edit, :update, :destroy]
 
   # GET /checklists
   # GET /checklists.json
@@ -29,7 +29,7 @@ class ChecklistsController < ApplicationController
 
     respond_to do |format|
       if @checklist.save
-        format.html { redirect_to checklists_path, notice: 'Checklist was successfully created.' }
+        format.html { redirect_to checklist_path(@checklist), notice: 'Checklist was successfully created.' }
         format.json { render :show, status: :created, location: @checklist }
       else
         format.html { render :new }
@@ -64,7 +64,7 @@ class ChecklistsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_checklist
+    def set_checklist!
       @checklist = Checklist.find(params[:id])
     end
 

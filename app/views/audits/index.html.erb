@@ -16,25 +16,17 @@
         </tr>
       </thead>
       <tbody>
-        <% @audits.each do |checklist| %>
+        <% @audits.each do |audit| %>
         <tr class=" odd">
-          <td valign="top" colspan="3" class="dataTables_empty"><b><%= link_to checklist.title, checlist.checklist.title %><b></td>
-          <td valign="top" colspan="2" class="dataTables_empty"><b><%= time_ago_in_words(checklist.updated_at) %><b></td>
-          <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Edit', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td valign="top" colspan="3" class="dataTables_empty"><b><%= link_to audit.checklist.title, checklist_audit_path(audit.checklist, audit) %><b></td>
+          <td valign="top" colspan="2" class="dataTables_empty"><b><%= time_ago_in_words(audit.updated_at) %><b></td>
+          <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Destroy', checklist_audit_path(audit.checklist, audit), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Edit', edit_checklist_audit_path(audit.checklist, audit) %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
     <div class="table-footer">
-      <div class="dataTables_length" id="dttb_length"><label><span>Rows per page:</span><select class="browser-default">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-            <option value="-1">All</option>
-          </select></label></div>
       <div class="dataTables_info" id="dttb_info" role="status" aria-live="polite">Showing <%= @audits.current_page %> to <%= @audits.current_page*10 %> of <%= @audits.total_pages %> entries</div>
       <div class="dataTables_paginate paging_full" id="dttb_paginate">
         <%= will_paginate @audits, previous_label: "Older", next_label: "Newer",  class: 'paginate_button first disabled' %>
@@ -49,7 +41,7 @@
       <h5>Choose one of the checklists:</h5>
     </div>
     <div class="collection with-header">
-         <%= render @checklists %>
+      <%= render @checklists %>
     </div>
   </div>
   <div class="modal-footer">

@@ -1,5 +1,8 @@
 class AuditsController < ApplicationController
-   before_action :set_checklists, only: [:create, :index]
+  
+   before_action :find_all_checklists, only: [:index]
+   before_action :find_checklist!, only: [:new, :create, :show]
+   before_action :find_audit!, only:[:show, :destroy, :edit, :create]
 
   def index
     @audits = Audit.all
@@ -10,23 +13,40 @@ class AuditsController < ApplicationController
   end
   
   def new
-    @show_form = true
-    @checklist = Checklist.find(params[:checklist_id])
+    @show_answer_form = true
+    @audit = @checklist.audits.create
+  end
+  
+  def edit
+    @show_answer_form = true
   end
 
   def create
-    @checklist = Checklist.find(params[:checklist_id])
-    @audit = @checklist.audits.build
-    if @audit.save
-      redirect_to checklist_audits_path(@checklist)
+    @answer = Audits::CreateService.call(@audit)
+    if @answer
+      redirect_to checklist_path(@audit)
     else
-      flash[:error] = "Something went wrong, the comment wasn't deleted"
+      redirect_to checklists_path
     end
+  end
+
+  def destroy
+    @audit.destroy
+    redirect_to audits_path 
   end
   
   private
-  def set_checklists
+
+  def find_all_checklists
     @checklists = Checklist.all
       .paginate(page: params[:page])
+  end
+
+  def find_checklist!
+    @checklist = Checklist.find(params[:checklist_id])
+  end
+
+  def find_audit!
+    @audit = Audit.find(params[:id])
   end
 end

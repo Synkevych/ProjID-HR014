@@ -1,12 +1,12 @@
 <div class="card material-table">
   <div class="table-header">
     <h5>You're Checklists</h5>
-    <div class="actions" data-turbolinks="false">
-      <a class="waves-effect btn nopadding teal lighten-2" href="<%= new_checklist_path %>">Add new</a>
+    <div class="actions">
+      <a class="waves-effect btn teal lighten-2" href="<%= new_checklist_path %>">Add new</a>
     </div>
   </div>
   <div id="dttb_wrapper" class="dataTables_wrapper no-footer">
-    <table class="responsive nowrap table table-hover dataTable no-footer dtr-inline" data-sort="true" data-source="/posts.json" id="dttb" role="grid" aria-describedby="dttb_info">
+    <table class="responsive nowrap table table-hover dataTable no-footer dtr-inline" data-sort="true" id="dttb" role="grid">
       <thead>
         <tr role="row">
           <th data-data="title" class="sorting_desc center" colspan="5" aria-label="Title: activate to sort column ascending">Title</th>
@@ -15,22 +15,14 @@
       </thead>
       <tbody>
         <% @checklists.each do |checklist| %>
-        <tr class="odd">
-          <td valign="top" colspan="5" class="dataTables_empty"><b><%= link_to checklist.title, checklist %><b></td>
-          <td valign="top" colspan="5" class="dataTables_empty"><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+          <tr class="odd">
+            <td valign="top" colspan="5" class="dataTables_empty"><b><%= link_to checklist.title, checklist %><b></td>
+            <td valign="top" colspan="5" class="dataTables_empty"><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>
     <div class="table-footer">
-      <div class="dataTables_length" id="dttb_length"><label><span>Rows per page:</span><select class="browser-default">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-            <option value="-1">All</option>
-          </select></label></div>
       <div class="dataTables_info" id="dttb_info" role="status" aria-live="polite">Showing <%= @checklists.current_page > 1 ? @checklists.current_page+9 : 1 %> to <%= @checklists.current_page*10 %> of <%= @checklists.total_pages %> entries</div>
       <div class="dataTables_paginate paging_full" id="dttb_paginate">
         <%= will_paginate @checklists, previous_label: "Older", next_label: "Newer",  class: 'paginate_button first disabled' %>

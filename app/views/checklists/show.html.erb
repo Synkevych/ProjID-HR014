@@ -2,12 +2,16 @@
   <div class="col s8 offset-s2">
     <div class="card">
       <div class="card-content">
-        <h5> <%= @checklist.title %></h5>
-        <p> <%= @checklist.description %></p>
+        <h5>Title:
+          <b><%= @checklist.title %></b>
+        </h5>
+        <p>Description:
+          <b><%= @checklist.description %></b>
+        </p>
         <hr />
         <% @checklist.questions.any?  do %>
         <ul class="card-body">
-          <span class="card-title"> Questions: </span>
+          <span class="card-title"> <%= @checklist.cout_questions %> Questions: </span>
           <%= render @checklist.questions %>
         </ul>
         <% end %>

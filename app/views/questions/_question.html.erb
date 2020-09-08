@@ -2,6 +2,6 @@
   <p class="title"><%= question.title %></p>
   <small><%= question.description %></small>
 </li>
-<% if @show_form == true %>
-  <%= render partial: "answers/form", locals: { question: question } %>
+<% if @show_answer_form == true %>
+  <%= render partial: "answers/form" %>
 <% end %>

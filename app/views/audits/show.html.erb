@@ -2,23 +2,41 @@
   <div class="col s8 offset-s2">
     <div class="card">
       <div class="card-content">
-        <h5> <%= @checklist.title %></h5>
-        <p> <%= @checklist.description %></p>
-        <% @checklist.questions.any?  do %>
-        <ul class="card-body">
-          <span class="card-title">Answer <%= @checklist.cout_questions %> Questions: </span>
-          <% for question in @checklist.questions %>
-          <li><%= question.title %></li>
-          <% end %>
-        </ul>
+        <h4 class="center"> Audit &numero;<%= @audit.id %></h4>
+        <h5>Title:
+          <b><%= @checklist.title %></b>
+        </h5>
+        <p>Description:
+          <b><%= @checklist.description %></b>
+        </p>
+        <hr>
+        <% @checklist.questions.any? do %>
+        <table class="responsive nowrap table table-hover dataTable no-footer dtr-inline centered" id="dttb" role="grid" aria-describedby="dttb_info">
+          <thead>
+            <tr role="row">
+              <th data-data="question" class="sorting" colspan="1">Questions</th>
+              <th data-data="question" class="sorting" colspan="2"></th>
+              <th data-data="answer" class="sorting" colspan="2">Answers</th>
+              <th data-data="answer" class="sorting" colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @checklist.questions.each_with_index do |audit, i| %>
+            <tr class="odd">
+              <td valign="top" colspan="1" class="dataTables_empty"><%= audit.checklist.title %></td>
+              <td valign="top" colspan="2" class="dataTables_empty"><%= audit.checklist.description %></td>
+              <td valign="top" colspan="2" class="dataTables_empty"><%=  @audit.answers[i].answer%></td>
+              <td valign="top" colspan="3" class="dataTables_empty"><%=  @audit.answers[i].comment%></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
         <% end %>
       </div>
       <div class="card-action">
         <%= link_to 'Edit', edit_checklist_path(@checklist), class: 'waves-effect waves-light btn teal lighten-2' %>
-        <%= link_to 'All Checklists', checklists_path, class: 'waves-effect waves-light btn teal lighten-2'%>
-        <%= link_to "Open list", class: 'btn teal', data: { reflex: 'click->Audit#open_list'} %>
+        <%= link_to 'All Audits', audits_path, class: 'waves-effect waves-light btn teal lighten-2'%>
       </div>
     </div>
   </div>
 </div>
-<%= render "questions/form"%>

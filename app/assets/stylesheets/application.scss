@@ -11,3 +11,8 @@ $secondary-color: color("teal", "lighten-2") !default;
 .page-footer{
   padding-top: 0;
 }
+
+
+select {
+    display: block;
+}

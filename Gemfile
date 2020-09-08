@@ -24,6 +24,8 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'material_icons'
 # jQuery for materialize-sass UI plagin
 gem 'jquery-rails'
+# Flexible authentication solution for Rails with Warden.
+gem 'devise'
 
 
 # Use CoffeeScript for .coffee assets and views

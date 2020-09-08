@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card">
+      <div class="card-content">
+        <h5> <%= @audit.checklist.title %></h5>
+        <p> <%= @audit.checklist.description %></p>
+        <hr />
+        <% @audit.checklist.questions.any?  do %>
+        <ul class="card-body">
+          <span class="card-title">Answer <%= @audit.checklist.cout_questions %> Questions:</span>
+          <%= render @audit.checklist.questions %>
+        </ul>
+        <% end %>
+      </div>
+      <div class="card-action">
+        <%= button_to 'Create', {controller: "audits", action: "create"}, method: :post, class: 'waves-effect waves-light btn' %>
+        <%= link_to 'Cancel', checklists_path, class: 'waves-effect waves-light btn red darken-1'%>
+      </div>
+    </div>
+  </div>
+</div>
