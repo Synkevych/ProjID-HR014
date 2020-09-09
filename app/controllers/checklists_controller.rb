@@ -1,15 +1,14 @@
 class ChecklistsController < ApplicationController
   before_action :set_checklist!, only: [:show, :edit, :update, :destroy]
+  respond_to :js
 
   # GET /checklists
-  # GET /checklists.json
   def index
     @checklists = Checklist.all
       .paginate(page: params[:page])
   end
 
   # GET /checklists/1
-  # GET /checklists/1.json
   def show
   end
 
@@ -23,53 +22,43 @@ class ChecklistsController < ApplicationController
   end
 
   # POST /checklists
-  # POST /checklists.json
   def create
     @checklist = Checklist.new(checklist_params)
-
-    respond_to do |format|
-      if @checklist.save
-        format.html { redirect_to checklist_path(@checklist), notice: 'Checklist was successfully created.' }
-        format.json { render :show, status: :created, location: @checklist }
-      else
-        format.html { render :new }
-        format.json { render json: @checklist.errors, status: :unprocessable_entity }
-      end
+    if @checklist.save
+      flash[:success] = 'Checklist was successfully created.'
+      redirect_to checklist_path(@checklist)
+    else
+      flash[:error] = @checklist.errors.full_messages.join("\n")
     end
   end
 
   # PATCH/PUT /checklists/1
-  # PATCH/PUT /checklists/1.json
   def update
     respond_to do |format|
       if @checklist.update(checklist_params)
-        format.html { redirect_to @checklist, notice: 'Checklist was successfully updated.' }
-        format.json { render :show, status: :ok, location: @checklist }
+        format.html { redirect_to @checklist, flash: {success: 'Checklist was successfully updated.' }}
       else
-        format.html { render :edit }
-        format.json { render json: @checklist.errors, status: :unprocessable_entity }
+        format.html { render :edit, flash: {success: @checklist.errors, status: :unprocessable_entity }}
       end
     end
   end
 
   # DELETE /checklists/1
-  # DELETE /checklists/1.json
   def destroy
     @checklist.destroy
     respond_to do |format|
-      format.html { redirect_to checklists_url, notice: 'Checklist was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to checklists_url, flash[:success] = 'Checklist was successfully destroyed.' }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Find a checklist using it ID
     def set_checklist!
       @checklist = Checklist.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def checklist_params
-      params.require(:checklist).permit(:title, :description)
+      params.require(:checklist).permit(:title, :description, :publish)
     end
 end

@@ -26,6 +26,7 @@ gem 'material_icons'
 gem 'jquery-rails'
 # Flexible authentication solution for Rails with Warden.
 gem 'devise'
+gem 'toastr-rails'
 
 
 # Use CoffeeScript for .coffee assets and views

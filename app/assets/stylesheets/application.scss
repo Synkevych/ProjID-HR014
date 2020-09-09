@@ -16,3 +16,9 @@ $secondary-color: color("teal", "lighten-2") !default;
 select {
     display: block;
 }
+
+
+.card .card-action label {
+  margin-left: 0.5em;
+  vertical-align: text-top;
+}

@@ -3,24 +3,30 @@ class AuditsController < ApplicationController
    before_action :find_all_checklists, only: [:index]
    before_action :find_checklist!, only: [:new, :create, :show]
    before_action :find_audit!, only:[:show, :destroy, :edit, :create]
-
+  
+  # GET /audits
   def index
     @audits = Audit.all
       .paginate(page: params[:page])
+    @published_checklist = @checklists.published
   end
   
+  # GET /audits/1
   def show
   end
   
+  # GET /audits/new
   def new
     @show_answer_form = true
     @audit = @checklist.audits.create
   end
   
+  # GET /audits/1/edit
   def edit
     @show_answer_form = true
   end
 
+  # POST /audits
   def create
     @answer = Audits::CreateService.call(@audit)
     if @answer
@@ -30,23 +36,26 @@ class AuditsController < ApplicationController
     end
   end
 
+  # DELETE /audits/1
   def destroy
     @audit.destroy
-    redirect_to audits_path 
+    redirect_to audits_path
   end
   
   private
+    # Find a checklist using to show them in index page 
+    def find_all_checklists
+      @checklists = Checklist.all
+        .paginate(page: params[:page])
+    end
 
-  def find_all_checklists
-    @checklists = Checklist.all
-      .paginate(page: params[:page])
-  end
+    # Find a checklist using it ID
+    def find_checklist!
+      @checklist = Checklist.find(params[:checklist_id])
+    end
 
-  def find_checklist!
-    @checklist = Checklist.find(params[:checklist_id])
-  end
-
-  def find_audit!
-    @audit = Audit.find(params[:id])
-  end
+      # Only allow a list of trusted parameters through.
+    def find_audit!
+      @audit = Audit.find(params[:id])
+    end
 end

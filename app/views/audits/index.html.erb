@@ -1,3 +1,5 @@
+<%= javascript_include_tag "audits.js" %>
+
 <div class="card material-table">
   <div class="table-header">
     <h5>You're Audits</h5>
@@ -10,7 +12,7 @@
     <table class="responsive nowrap table table-hover dataTable no-footer dtr-inline" data-sort="true" data-source="/posts.json" id="dttb" role="grid" aria-describedby="dttb_info">
       <thead>
         <tr role="row">
-          <th data-data="title" class="sorting_desc center" colspan="3" aria-label="Title: activate to sort column ascending">Checklist Name</th>
+          <th data-data="title" class="sorting center" colspan="3" aria-label="Title: activate to sort column ascending">Checklist Name</th>
           <th data-data="date" class="sorting center" colspan="2" aria-label="Date: activate to sort column ascending">Last Updated</th>
           <th data-data="action" class="sorting center" colspan="2">Action</th>
         </tr>
@@ -41,7 +43,7 @@
       <h5>Choose one of the checklists:</h5>
     </div>
     <div class="collection with-header">
-      <%= render @checklists %>
+      <%= render @checklists.published %>
     </div>
   </div>
   <div class="modal-footer">

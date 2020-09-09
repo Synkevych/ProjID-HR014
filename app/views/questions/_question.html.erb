@@ -1,6 +1,6 @@
 <li class="collection-item text-darken-2">
-  <p class="title"><%= question.title %></p>
-  <small><%= question.description %></small>
+  <p class="title"><b><%= question.title %></b></p>
+  <p><%= question.description %></p>
 </li>
 <% if @show_answer_form == true %>
   <%= render partial: "answers/form" %>

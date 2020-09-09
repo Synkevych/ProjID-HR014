@@ -18,11 +18,22 @@
 
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+//= require toastr
 
 $(document).ready(function () {
-  $('input#input_text, input#input_answer').characterCounter();
-});
-
-$(document).ready(function () {
-  $('.modal').modal();
+  $('.sidenav').sidenav();
+  toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "positionClass": "toast-top-right",
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
 });
