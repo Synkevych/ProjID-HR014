@@ -16,7 +16,7 @@
       <tbody>
         <% @checklists.each do |checklist| %>
           <tr class="odd">
-            <td valign="top" colspan="5" class="dataTables_empty"><b><%= link_to checklist.title, checklist %><b></td>
+            <td valign="top" colspan="5" class="dataTables_empty"><b><%= link_to checklist.title, checklist, title: "Click to show more information" %><b></td>
             <td valign="top" colspan="5" class="dataTables_empty"><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>

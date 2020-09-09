@@ -5,7 +5,7 @@
   </a>
 </p>
 <br/>
-<img src="/public/img/checklist.png"/>
+<img src="public/img/checklists.png"/>
 <br/>
 <p align="center">
   RubyForms easy form creation and answers to them. Built with RoR framework.

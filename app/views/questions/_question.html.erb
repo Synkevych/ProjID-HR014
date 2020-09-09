@@ -3,5 +3,5 @@
   <p><%= question.description %></p>
 </li>
 <% if @show_answer_form == true %>
-  <%= render partial: "answers/form" %>
+  <%= render partial: "answers/form", locals: {question_id: question.id }%>
 <% end %>

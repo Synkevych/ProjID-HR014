@@ -20,7 +20,7 @@
       <tbody>
         <% @audits.each do |audit| %>
         <tr class=" odd">
-          <td valign="top" colspan="3" class="dataTables_empty"><b><%= link_to audit.checklist.title, checklist_audit_path(audit.checklist, audit) %><b></td>
+          <td valign="top" colspan="3" class="dataTables_empty"><b><%= link_to audit.checklist.title, checklist_audit_path(audit.checklist, audit), title: "Click to show more information" %><b></td>
           <td valign="top" colspan="2" class="dataTables_empty"><b><%= time_ago_in_words(audit.updated_at) %><b></td>
           <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Destroy', checklist_audit_path(audit.checklist, audit), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Edit', edit_checklist_audit_path(audit.checklist, audit) %></td>

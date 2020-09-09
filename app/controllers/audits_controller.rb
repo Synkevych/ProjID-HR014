@@ -2,7 +2,7 @@ class AuditsController < ApplicationController
   
    before_action :find_all_checklists, only: [:index]
    before_action :find_checklist!, only: [:new, :create, :show]
-   before_action :find_audit!, only:[:show, :destroy, :edit, :create]
+   before_action :find_audit!, only:[:show, :destroy, :edit, :create, :update]
   
   # GET /audits
   def index
@@ -31,15 +31,24 @@ class AuditsController < ApplicationController
     @answer = Audits::CreateService.call(@audit)
     if @answer
       redirect_to checklist_path(@audit)
+      flash[:success] = 'Audit was successfully created.' 
     else
       redirect_to checklists_path
+      flash[:danger] = ' There was a problem with destroying this audit.' 
     end
+  end
+
+  # PATCH/PUT /audits/1
+  def update
+    redirect_to @audit
+    flash[:success] = 'Checklist was successfully updated.'
   end
 
   # DELETE /audits/1
   def destroy
     @audit.destroy
     redirect_to audits_path
+    flash[:error] = 'Audit was successfully destroyed.' 
   end
   
   private
