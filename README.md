@@ -1,47 +1,84 @@
-# Web-application that allows you to create and manage checklists and audits
+<h1 align="center"> RubyForms </h1> <br>
+<p align="center">
+  <a href="https://github.com/Synkevych/ProjID-HR014/">
+    <img alt="RubyForms" title="RubyForms" src="https://www.nicepng.com/png/full/234-2344335_long-checklist-vector-checklist-icon.png" width="50">
+  </a>
+</p>
+<br/>
+<img src="/public/img/checklist.png"/>
+<br/>
+<p align="center">
+  RubyForms easy form creation and answers to them. Built with RoR framework.
+</p>
 
-### Architectural requirements and used resources
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
 
-1.	Task should be ready for production, well-tested and don`t contains bugs.
-2.	Technologies stack: Back-end: Ruby 2.6.3. Frameworks: Rails 5 (preferable). Front-end: React, Vue.js, Angular (preferable, but can be a complete rails application). UI guideline: Materialize (css framework based on Material Design).
-3.	Required to create private git repository on https://github.com with source code and share access to it.
-4.	Git repository should contain README.md with documentation and instructions in English.
-5.	Source code should be commented in English (https://en.wikipedia.org/wiki/Comment_(computer_programming)).
-6.	Source code should be written according to code style. If frameworks have some specific code style — specific rules should be followed.
-7.	Readability and Maintainability are very important.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting started](#getting-started)
+- [Feedback](#feedback)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Things you may want to cover:
+## Introduction
 
-* Ruby version: Ruby 2.6.3 (Rails 5.2.4.3)
+Create new form with dinamic question field, view you checklist. Register to this app using devise gem.
 
-* System dependencies
+## Features
 
-* Configuration
+A few of the things you can do with RubyForms:
 
-* Database: PostgreSQL >= 9.3
+* Create new form
+* Register to app
+* Create audits page
 
-> set database user/password to youre `~/.bash_profile` file
+## Getting started
 
-* Database initialization
+##### Prerequisites
+
+The setups steps expect following tools installed on the system.
+
+- Github
+- Ruby [2.6.3](https://www.ruby-lang.org/en/news/2019/04/17/ruby-2-6-3-released/)
+- Rails [5.2.4.3](https://weblog.rubyonrails.org/2020/5/18/Rails-5-2-4-3-and-6-0-3-1-have-been-released/)
+- PostgreSQL >= 9.3
+
+##### 1. Check out the repository
 
 ```bash
+git clone https://github.com/Synkevych/ProjID-HR014.git
+```
+
+##### 2. Create database.yml file
+
+Copy the sample database.yml file and edit the database configuration as required.
+
+```bash
+cp config/database.yml.sample config/database.yml
+```
+
+##### 3. Create and setup the database
+
+Run the following commands to create and setup the database.
+
+```ruby
+rails db:create
 rails db:setup
 rails db:migrate
 ```
 
-* How to run the test suite
+##### 4. Start the Rails server
 
-* Services (job queues, cache servers, search engines, etc.)
+You can start the rails server using the command given below.
 
-* Deployment instructions
-
-* Launch
-
-```bash
-rails server
+```ruby
+rails s
 ```
 
-* Front-end: Materialize sass
+And now you can visit the site with the URL http://localhost:3000
+
+## Feedback
+
+Feel free to send us feedback on [Twitter](https://twitter.com/synkevych) or [file an issue](https://github.com/Synkevych/ProjID-HR014/issues/new). Feature requests are always welcome.
