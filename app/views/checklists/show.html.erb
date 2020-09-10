@@ -5,13 +5,15 @@
         <h5>Title:
           <b><%= @checklist.title %></b>
         </h5>
+        <br/>
         <p>Description:
           <b><%= @checklist.description %></b>
         </p>
+        <br/>
         <hr />
         <% @checklist.questions.any?  do %>
         <ul class="card-body">
-          <span class="card-title"> <%= @checklist.cout_questions %> Questions: </span>
+          <span class="card-title"><%= questions_title(@checklist.count_questions) %></span>
           <%= render @checklist.questions %>
         </ul>
         <% end %>
@@ -24,7 +26,7 @@
         <%= link_to 'All Checklists', checklists_path, class: 'waves-effect waves-light btn teal lighten-2'%>
         <label>
           <input type="checkbox" name="checkbox" class="filled-in" <%= checked_checkbox %> />
-          <span>Publish</span>
+          <span><%= publish_name %></span>
         </label>
       </div>
     </div>

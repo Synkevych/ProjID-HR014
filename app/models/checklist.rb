@@ -10,8 +10,8 @@ class Checklist < ApplicationRecord
   # Set up the number of displayed Checklist items per page
   self.per_page = 10
   
-  # @return [Integer] sum of all questions in the currebt list
-  def cout_questions
+  # @return [Integer] sum of all questions in the current list
+  def count_questions
     questions.count
   end
 

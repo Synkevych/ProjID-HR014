@@ -3,14 +3,14 @@ $(document).ready(function () {
     ,checklist_id = $('#checklist').attr("data-checklist");
 
   checkbox.addEventListener('change', function () {
-    let checked;
+    var checked;
     if (this.checked) {
       checked = true;
     } else {
       checked = false;
     }
     $.ajax({
-      url: `/checklists/${checklist_id}`,
+      url: '/checklists/' + checklist_id,
       method: 'PATCH',
       headers: {
         'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content

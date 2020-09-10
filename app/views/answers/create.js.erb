@@ -1,0 +1,9 @@
+$("#answer_form form").off("ajax:success").on("ajax:success", function() {
+  var html = `<br/>
+    <p class='title'>
+      <b><%= @answer.answer %>.   </b>
+      <%= @answer.comment %>
+    </p>`;
+  $(this).closest(".answer").append(html).removeClass('row');
+  this.closest(".col").remove();
+});
