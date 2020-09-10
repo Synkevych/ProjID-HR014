@@ -61,6 +61,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # rspec-rails is a testing framework for Rails 5+
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  # factory_bot_rails provides integration between factory_bot and rails
+  gem 'factory_bot_rails', '~> 5.2'
+  # Extracting `assigns` and `assert_template` from ActionDispatch
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
+  # Set of matchers and helpers to allow you test your APIs responses like a pro.
+  gem 'faker', '~> 2.11'
 end
 
 
