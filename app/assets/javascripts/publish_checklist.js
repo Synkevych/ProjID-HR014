@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  var checkbox = document.querySelector("input[name=checkbox]")
-    ,checklist_id = $('#checklist').attr("data-checklist");
+  var checkbox = document.querySelector("input[name=checkbox]"),
+      checklist_id = $('#checklist').attr("data-checklist");
 
   checkbox.addEventListener('change', function () {
     var checked;

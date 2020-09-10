@@ -5,6 +5,7 @@ class ChecklistsController < ApplicationController
   # GET /checklists
   def index
     @checklists = Checklist.all
+      .order('created_at DESC')
       .paginate(page: params[:page])
   end
 
@@ -29,6 +30,7 @@ class ChecklistsController < ApplicationController
       redirect_to checklist_path(@checklist)
     else
       flash[:error] = @checklist.errors.full_messages.join("\n")
+      render :new
     end
   end
 
@@ -38,7 +40,7 @@ class ChecklistsController < ApplicationController
       if @checklist.update(checklist_params)
         format.html { redirect_to @checklist, flash: {success: 'Checklist was successfully updated.' }}
       else
-        format.html { render :edit, flash: {success: @checklist.errors, status: :unprocessable_entity }}
+        format.html { render :edit, flash: {error: @checklist.errors, status: :unprocessable_entity }}
       end
     end
   end
@@ -47,8 +49,12 @@ class ChecklistsController < ApplicationController
   def destroy
     @checklist.destroy
     respond_to do |format|
-      format.html { redirect_to checklists_url, flash[:success] = 'Checklist was successfully destroyed.' }
+      format.html { redirect_to checklists_url }
+      flash[:success] = 'Checklist was successfully destroyed.'
     end
+  end
+  
+  def error
   end
 
   private

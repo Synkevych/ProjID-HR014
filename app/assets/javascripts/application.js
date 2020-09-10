@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 
 //= require materialize-sprockets
 //= require materialize/extras/nouislider

@@ -1,4 +1,3 @@
-
 module ControllerMacros
   def login_admin
     before(:each) do

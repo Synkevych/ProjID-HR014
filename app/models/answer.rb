@@ -4,5 +4,5 @@ class Answer < ApplicationRecord
 
   belongs_to :audit
   validates :answer, presence: true
-  validates :comment, presence: true, length: { maximum: 40 }
+  validates :comment, presence: true, length: { minimum: 12 }
 end

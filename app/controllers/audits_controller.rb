@@ -7,8 +7,9 @@ class AuditsController < ApplicationController
   # GET /audits
   def index
     @audits = Audit.all
+      .order('created_at DESC')
       .paginate(page: params[:page])
-    @published_checklist = @checklists.published
+    @published_checklist = @checklists.published.order('created_at DESC')
   end
   
   # GET /audits/1

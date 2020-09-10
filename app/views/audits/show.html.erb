@@ -21,12 +21,12 @@
             </tr>
           </thead>
           <tbody>
-            <% @checklist.questions.each_with_index do |question, i| %>
-            <tr class="odd question" data-checklist="<%= question.id %>" %>
-              <td valign="top" colspan="1" class="dataTables_empty"><%= question.checklist.title %></td>
-              <td valign="top" colspan="2" class="dataTables_empty"><%= question.checklist.description %></td>
-              <td valign="top" colspan="2" class="dataTables_empty"><%=  @audit.answers[i].answer%></td>
-              <td valign="top" colspan="3" class="dataTables_empty"><%=  @audit.answers[i].comment%></td>
+            <% @audit.answers.each_with_index do |answer, i| %>
+            <tr class="odd question" data-checklist="<%= answer.id %>" %>
+              <td valign="top" colspan="1" class="dataTables_empty"><%= @checklist.questions[i].title %></td>
+              <td valign="top" colspan="2" class="dataTables_empty"><%= @checklist.questions[i].description %></td>
+              <td valign="top" colspan="2" class="dataTables_empty"><%= answer.answer%></td>
+              <td valign="top" colspan="3" class="dataTables_empty"><%= answer.comment%></td>
             </tr>
             <% end %>
           </tbody>

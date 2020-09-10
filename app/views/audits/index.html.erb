@@ -12,18 +12,33 @@
     <table class="responsive nowrap table table-hover dataTable no-footer dtr-inline" data-sort="true" data-source="/posts.json" id="dttb" role="grid" aria-describedby="dttb_info">
       <thead>
         <tr role="row">
+          <th colspan="1"></th>
           <th data-data="title" class="sorting center" colspan="3" aria-label="Title: activate to sort column ascending">Checklist Name</th>
-          <th data-data="date" class="sorting center" colspan="2" aria-label="Date: activate to sort column ascending">Last Updated</th>
           <th data-data="action" class="sorting center" colspan="2">Action</th>
         </tr>
       </thead>
       <tbody>
-        <% @audits.each do |audit| %>
+        <% @audits.each_with_index do |audit, i| %>
         <tr class=" odd">
-          <td valign="top" colspan="3" class="dataTables_empty"><b><%= link_to audit.checklist.title, checklist_audit_path(audit.checklist, audit), title: "Click to show more information" %><b></td>
-          <td valign="top" colspan="2" class="dataTables_empty"><b><%= time_ago_in_words(audit.updated_at) %><b></td>
-          <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Destroy', checklist_audit_path(audit.checklist, audit), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <td valign="top" colspan="1" class="dataTables_empty"><%= link_to 'Edit', edit_checklist_audit_path(audit.checklist, audit) %></td>
+          <td valign="top" colspan="1" class="dataTables_empty">
+            <b><%= get_table_number(@audits.current_page, i) %><b>
+          </td> 
+          <td valign="top" colspan="3" class="dataTables_empty">
+            <b>
+              <%= link_to audit.checklist.title, checklist_audit_path(audit.checklist, audit), title: "Click to show more information" %>
+            <b>
+          </td>
+          <td valign="top" colspan="2" class="dataTables_empty">
+            <b>
+              <%= time_ago_in_words(audit.updated_at) %>
+            <b>
+          </td>
+          <td valign="top" colspan="1" class="dataTables_empty">
+            <%= link_to 'Destroy', checklist_audit_path(audit.checklist, audit), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+          <td valign="top" colspan="1" class="dataTables_empty">
+            <%= link_to 'Edit', edit_checklist_audit_path(audit.checklist, audit) %>
+          </td>
         </tr>
         <% end %>
       </tbody>

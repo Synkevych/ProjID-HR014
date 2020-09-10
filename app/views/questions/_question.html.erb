@@ -5,3 +5,7 @@
 <% if @show_answer_form == true %>
   <%= render partial: "answers/form", locals: {question_id: question.id }%>
 <% end %>
+<% if @checklist.questions.last.id != question.id %>
+  <hr/>
+  <br/>
+<% end %>

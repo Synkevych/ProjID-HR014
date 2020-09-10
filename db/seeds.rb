@@ -6,6 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-15.times do |i|
-  Checklist.create(title: 'New title ' + i.to_s , description: 'Lord of the Rings')
-end
+FactoryBot.create_list(:checklist_with_questions, 4)

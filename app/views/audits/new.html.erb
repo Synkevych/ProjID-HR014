@@ -3,25 +3,25 @@
     <div class="card">
       <div class="card-content" id="audit" data-checklist="<%= @audit.id %>">
         <h5> <%= @checklist.title %></h5>
-        <br/>
+        <br />
         <p> <%= @checklist.description %></p>
-        <br/>
+        <br />
         <hr />
         <% @checklist.questions.any?  do %>
-          <ul class="card-body">
-            <h6 class="center">Answer <%= @checklist.count_questions %> Questions:</h6>
-            <%= render @checklist.questions %>
-          </ul>
+        <ul class="card-body">
+          <h6 class="center">Answer <%= @checklist.count_questions %> Questions:</h6>
+          <%= render @checklist.questions %>
+        </ul>
         <% end %>
       </div>
       <div class="card-action">
         <%= link_to 'Create', checklist_audit_path(@checklist, @audit),
             class: 'waves-effect waves-light btn', id: "test_answers" %>
-        <%= link_to 'Cancel', checklist_audit_path(@audit.checklist, @audit),
+        <%= link_to 'Cancel', audits_path,
             method: :delete, data: { confirm: 'Are you sure?' },
             class: 'waves-effect waves-light btn red darken-1' %>
+      </div>
     </div>
   </div>
-</div>
-<%= javascript_include_tag "form_validator.js" %>
-<%= javascript_include_tag "check_answers.js" %>
+  <%= javascript_include_tag "form_validator.js" %>
+  <%= javascript_include_tag "check_answers.js" %>

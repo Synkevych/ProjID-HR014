@@ -2,7 +2,8 @@ class AnswersController < ApplicationController
 
   before_action :find_audit!
   before_action :find_checklist!
-
+  
+  def new; end
   # POST /audits/1/answers
   def create
     @answer = @audit.answers.build(answer_params)
@@ -11,6 +12,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Your answer has been saved."
     else
       flash[:error] = @answer.errors.full_messages.join("\n")
+      render :new
     end
   end
   

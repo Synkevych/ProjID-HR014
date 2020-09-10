@@ -1,6 +1,9 @@
 class QuestionsController < ApplicationController
-  before_action :find_checklist!, only: [:create]
-  
+  before_action :find_checklist!, only: [:create, :new]
+  respond_to :js
+
+  def new; end
+
   # POST /checklists/1/questions
   def create
     @question = @checklist.questions.new(question_params)
@@ -10,7 +13,7 @@ class QuestionsController < ApplicationController
       flash[:success] = "Question created."
     else
       flash[:error] = @question.errors.full_messages.join("\n")
-      render status: 422
+      render :new
     end
   end
 

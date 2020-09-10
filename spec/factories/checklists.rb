@@ -10,5 +10,13 @@ FactoryBot.define do
       public { true }
     end
     
+    factory :checklist_with_questions do
+      transient do
+        questions_count { 5 }
+      end
+      after(:create) do |checklist, evaluator|
+        create_list(:question, evaluator.questions_count, checklist: checklist)
+      end
+    end
   end
 end

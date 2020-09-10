@@ -9,7 +9,7 @@
           <%= form.select :answer, options_for_select(Answer::DEFAULT_ANSWER), { prompt: true, selected: '3' }, required: true, class: 'input-field' %>
         </p>
         <%= form.label :comment %><br>
-        <%= form.text_area :comment, required: true %>
+        <%= form.text_area :comment, data: { length:120 }, required: true, id: "comment" %>
         </p>
         <p>
           <%= form.submit 'Send Answer', class: 'waves-effect waves-light btn'%>
@@ -19,3 +19,4 @@
     </div>
   </div>
 </div>  
+<%= javascript_include_tag "form_validator.js" %>

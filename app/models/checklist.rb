@@ -3,7 +3,8 @@ class Checklist < ApplicationRecord
   # the question that belongs to the specific checklist will be deleted as well. 
   has_many :questions, dependent: :destroy
   has_many :audits, dependent: :destroy
-  validates :title, presence: true, length: { maximum: 40 }, uniqueness: true
+  
+  validates :title, presence: true, length: { in: 1..40 }, uniqueness: true
   validates :description, presence: true
   validates :publish, default: false
   

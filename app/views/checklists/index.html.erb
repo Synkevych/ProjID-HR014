@@ -23,7 +23,7 @@
       </tbody>
     </table>
     <div class="table-footer">
-      <div class="dataTables_info" id="dttb_info" role="status" aria-live="polite">Showing <%= @checklists.current_page > 1 ? @checklists.current_page+9 : 1 %> to <%= @checklists.current_page*10 %> of <%= @checklists.total_pages %> entries</div>
+      <div class="dataTables_info" id="dttb_info" role="status" aria-live="polite"><%= show_total_pages(@checklists.current_page, @checklists.total_pages) %></div>
       <div class="dataTables_paginate paging_full" id="dttb_paginate">
         <%= will_paginate @checklists, previous_label: "Older", next_label: "Newer",  class: 'paginate_button first disabled' %>
       </div>
