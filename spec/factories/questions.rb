@@ -1,3 +1,5 @@
+require 'faker'
+
 FactoryBot.define do
   factory :question do
     title { Faker::Lorem.sentence(word_count: 3, supplemental: true) }

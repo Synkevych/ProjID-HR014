@@ -79,6 +79,27 @@ rails s
 
 And now you can visit the site with the URL http://localhost:3000
 
+##### 5. Running specs tests
+
+You can run all tests using the command given below.
+
+```bash
+# Default: Run all spec files (i.e., those matching spec/**/*_spec.rb)
+$ rspec
+
+# Run all spec files in a single directory (recursively)
+$ rspec spec/models
+
+# Run a single spec file
+$ rspec spec/controllers/accounts_controller_spec.rb
+
+# Run a single example from a spec file (by line number)
+$ rspec spec/controllers/accounts_controller_spec.rb:8
+
+# See all options for running specs
+$ rspec --help
+```
+
 ## Feedback
 
 Feel free to send us feedback on [Twitter](https://twitter.com/synkevych) or [file an issue](https://github.com/Synkevych/ProjID-HR014/issues/new). Feature requests are always welcome.

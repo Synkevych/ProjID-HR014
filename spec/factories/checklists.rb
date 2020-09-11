@@ -7,7 +7,7 @@ FactoryBot.define do
     publish { false }
     
     factory :published_checklist do
-      public { true }
+      publish { true }
     end
     
     factory :checklist_with_questions do
@@ -16,6 +16,15 @@ FactoryBot.define do
       end
       after(:create) do |checklist, evaluator|
         create_list(:question, evaluator.questions_count, checklist: checklist)
+      end
+    end
+
+    factory :published_checklist_with_questions do
+      transient do
+        questions_count { 5 }
+      end
+      after(:create) do |checklist, evaluator|
+        create_list(:question, evaluator.questions_count, checklist: checklist, publish: true)
       end
     end
   end

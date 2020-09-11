@@ -8,6 +8,5 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { secure_password }
     password_confirmation { secure_password }
-    
   end
 end

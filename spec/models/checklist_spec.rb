@@ -39,15 +39,21 @@ RSpec.describe Checklist, type: :model do
   end
 
   describe "#filter published" do
-  subject { Checklist.publish }
-  let(:checklist_not_published) { create(:checklist_with_questions) }
+  subject { Checklist.published }
   
     context "not published" do
+      let!(:checklist_not_published) { create(:checklist) }
       it "returns 0 checklist" do
-        expect(subject).to 
+        expect(subject.count).to eq(0)
       end
     end
-
+    
+    context "published" do
+      let!(:published_checklist) { create(:published_checklist) }
+      it "returns 1 checklist" do
+        expect(subject.count).to eq(1)
+      end
+    end
   end
 
 end
