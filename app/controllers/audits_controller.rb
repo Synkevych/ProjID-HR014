@@ -1,7 +1,7 @@
 class AuditsController < ApplicationController
   
   before_action :find_all_checklists, only: [:index]
-  before_action :find_checklist!, only: [:new, :create, :show]
+  before_action :find_checklist!, only: [:new, :create, :show, :update]
   before_action :find_audit!, only:[:show, :destroy, :edit, :create, :update]
   
   # GET /audits
@@ -22,14 +22,18 @@ class AuditsController < ApplicationController
   end
   
   # GET /audits/1/edit
-  def edit
-    @show_answer_form = true
-  end
+  def edit; end
 
   # PATCH/PUT /audits/1
   def update
-    redirect_to @audit
-    flash[:success] = 'Checklist was successfully updated.'
+    if @audit.update(audit_params)
+      flash[:success] = 'Audit was successfully updated.'
+      redirect_to checklist_audit_path(@checklist, @audit)
+    else
+      flash[:success] = 'With updateng audit has an error.'
+      render :edit
+    end
+    # redirect_to @audit
   end
 
   # DELETE /audits/1
@@ -45,7 +49,7 @@ class AuditsController < ApplicationController
   end
   
   private
-    # Find a checklist using to show them in index page 
+    # Find all checklists using to show them in index page 
     def find_all_checklists
       @checklists = Checklist.all
         .paginate(page: params[:page])
@@ -59,5 +63,9 @@ class AuditsController < ApplicationController
       # Only allow a list of trusted parameters through.
     def find_audit!
       @audit = Audit.find(params[:id])
+    end
+
+    def audit_params
+      params.require(:audit).permit(:checklist_id, answers: [:id, :question_id, :answer, :comment])
     end
 end

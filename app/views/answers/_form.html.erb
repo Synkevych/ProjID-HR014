@@ -7,7 +7,7 @@
         <p>
           <%= form.label :answer %><br>
           <%= form.select :answer, options_for_select(Answer::DEFAULT_ANSWER),
-              { prompt: true, selected: '3' },
+              {include_blank: true},
               required: true, class: 'input-field' %>
         </p>
         <%= form.label :comment %><br>

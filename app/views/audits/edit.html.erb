@@ -8,10 +8,7 @@
         <% @audit.checklist.questions.any?  do %>
         <ul class="card-body">
           <span class="card-title">Answer <%= @audit.checklist.count_questions %> Questions:</span>
-          <%= @audit.checklist.questions.each_with_index do |question, i|  %>
-            <%= render question %>
             <%= render 'form', audit: @audit %>
-          <% end %>
         </ul>
         <% end %>
       </div>

@@ -6,13 +6,13 @@
         <%= form.hidden_field :checklist_id, value: @audit.checklist.id %>
 
         <div class="field">
-         <%= form.fields_for :answer do |f| %>
-          <%= render 'answers/edit_form', f: f %>
-         <% end %>
+            <%= form.fields_for :answers do |f| %>
+              <%= render 'answers/edit_form', f: f %>
+            <% end %>
         </div>
         <p>
-          <%= form.submit 'Send Answer', class: 'waves-effect waves-light btn'%>
         </p>
+          <%= form.submit 'Send Answer', class: 'waves-effect waves-light btn'%>
         <% end %>
       </div>
     </div>

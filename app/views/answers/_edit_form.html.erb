@@ -1,11 +1,16 @@
+<%= render 'questions/question', question: Question.find(f.object.question_id) %>
 
+<%= f.hidden_field :question_id %>
 <p>
   <%= f.label :answer %><br>
-  <%= f.select :answer, options_for_select(Answer::DEFAULT_ANSWER),
-      { prompt: true, selected: '3' },
-      required: true, class: 'input-field' %>
+  <%= f.select(:answer, options_for_select(Answer::DEFAULT_ANSWER, selected: f.object.answer),
+      required: true, class: 'input-field') %>
 </p>
+<p>
 <%= f.label :comment %><br>
 <%= f.text_area :comment, data: { length:120 },
     required: true, id: "comment" %>
 </p>
+<br/>
+<hr/>
+<br/>
