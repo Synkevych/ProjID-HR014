@@ -1,0 +1,20 @@
+<div class="row answer">
+  <div class="col s8 offset-s2">
+    <div class="card">
+      <div class="card-content answer_comment">
+        <%= form_with(model: [@audit.checklist, @audit]) do |form| %>
+        <%= form.hidden_field :checklist_id, value: @audit.checklist.id %>
+
+        <div class="field">
+         <%= form.fields_for :answer do |f| %>
+          <%= render 'answers/edit_form', f: f %>
+         <% end %>
+        </div>
+        <p>
+          <%= form.submit 'Send Answer', class: 'waves-effect waves-light btn'%>
+        </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

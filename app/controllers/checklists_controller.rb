@@ -1,6 +1,5 @@
 class ChecklistsController < ApplicationController
   before_action :set_checklist!, only: [:show, :edit, :update, :destroy]
-  respond_to :js
 
   # GET /checklists
   def index
@@ -65,6 +64,6 @@ class ChecklistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checklist_params
-      params.require(:checklist).permit(:title, :description, :publish)
+      params.require(:checklist).permit(:title, :description, :public)
     end
 end

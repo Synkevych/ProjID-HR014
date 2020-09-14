@@ -1,11 +1,10 @@
-<%= javascript_include_tag "audits.js" %>
-
 <div class="card material-table">
   <div class="table-header">
     <h5>You're Audits</h5>
     <div class="actions" data-turbolinks="false">
       <!-- Modal Trigger -->
-      <a class="waves-effect waves-light btn teal lighten-2 modal-trigger" href="#modal1">Add new</a>
+      <a class="waves-effect waves-light btn teal lighten-2 modal-trigger"
+         href="#modal1" onclick="$('.modal').modal();">Add new</a>
     </div>
   </div>
   <div id="dttb_wrapper" class="dataTables_wrapper no-footer">
@@ -22,7 +21,7 @@
         <% @audits.each_with_index do |audit, i| %>
         <tr class=" odd">
           <td valign="top" colspan="1" class="dataTables_empty">
-            <b><%= get_table_number(@audits.current_page, i) %><b>
+            <b><%= get_row_number(@audits.current_page, i) %><b>
           </td> 
           <td valign="top" colspan="3" class="dataTables_empty">
             <b>
@@ -45,7 +44,7 @@
       </tbody>
     </table>
     <div class="table-footer">
-      <div class="dataTables_info" id="dttb_info" role="status" aria-live="polite">Showing <%= @audits.current_page %> to <%= @audits.current_page*10 %> of <%= @audits.total_pages %> entries</div>
+      <div class="dataTables_info" id="dttb_info" role="status" aria-live="polite"><%= get_pages_info(@audits.current_page, @audits.total_pages) %></div>
       <div class="dataTables_paginate paging_full" id="dttb_paginate">
         <%= will_paginate @audits, previous_label: "Older", next_label: "Newer",  class: 'paginate_button first disabled' %>
       </div>

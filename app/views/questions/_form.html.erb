@@ -3,14 +3,14 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">Add a question:</span>
-        <%= form_with(model: [ @checklist, @checklist.questions.build ], local: true) do |form| %>
+        <%= form_with(model: [ @checklist, @checklist.questions.build ]) do |form| %>
         <p>
           <%= form.label :title %><br>
-          <%= form.text_field :title, data: { length: 40 }, id: "input_answer", placeholder: "What is JavaScript Closures?" %>
+          <%= form.text_field :title, data: { length: 40 }, id: "input_answer", placeholder: "What is JavaScript Closures?", required: true %>
         </p>
         <p>
           <%= form.label :description %><br>
-          <%= form.text_area :description, placeholder: "A closure is a feature in JavaScript where an inner function has access to the outer (enclosing) function’s variables — a scope chain."%>
+          <%= form.text_area :description, placeholder: "A closure is a feature in JavaScript.", required: true, id: "comment" %>
         </p>
         <p>
           <%= form.submit class: 'waves-effect waves-light btn teal lighten-2'%>

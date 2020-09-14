@@ -1,16 +1,18 @@
 class QuestionsController < ApplicationController
-  before_action :find_checklist!, only: [:create, :new]
-  respond_to :js
 
-  def new; end
+  before_action :find_checklist!
+  
+  def new
+    @question = @checklist.question.new
+  end
 
   # POST /checklists/1/questions
   def create
-    @question = @checklist.questions.new(question_params)
+    @question = @checklist.questions.build(question_params)
     
     if @question.save
       redirect_to checklist_path(@checklist)
-      flash[:success] = "Question created."
+      flash[:success] = "Question was successfully created."
     else
       flash[:error] = @question.errors.full_messages.join("\n")
       render :new

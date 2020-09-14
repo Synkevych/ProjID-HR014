@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Audit, type: :model do
 
-  let (:audit) { build(:audit) }
+  let (:checklist) { build(:checklist) }
+  let (:question) { build(:question, checklist: checklist) }
+  let (:audit) { build(:audit, checklist: checklist) }
 
   it 'has a valid factory' do
-    expect(build(:audit)).to be_valid
+    expect(audit).to be_valid
   end
 
   describe 'associations' do

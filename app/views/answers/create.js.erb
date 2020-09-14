@@ -1,4 +1,4 @@
-$("#answer_form form").off("ajax:success").on("ajax:success", function() {
+$(".answer_comment form").off("ajax:success").on("ajax:success", function() {
   var html = `<br/>
     <p class='title'>
       <b><%= @answer.answer %>.</b>

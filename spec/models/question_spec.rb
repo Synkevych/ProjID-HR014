@@ -4,6 +4,7 @@ RSpec.describe Question, type: :model do
 
   let (:checklist) { build(:checklist) }
   let (:question) { build(:question, checklist: checklist) }
+  
   it 'has a valid factory' do
     expect(question).to be_valid
   end

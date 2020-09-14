@@ -1,15 +1,18 @@
-<div class="row answer"  data-checklist="<%= question_id %>">
+<div class="row answer" data-checklist="<%= question_id %>">
   <div class="col s8 offset-s2">
     <div class="card">
-      <div class="card-content answer_form" id="answer_form">
+      <div class="card-content answer_comment">
         <%= form_with(model: [ @checklist, @audit, @audit.answers.build ]) do |form| %>
-        <%= form.hidden_field :question_id, value: @checklist.questions.first.id %>
+        <%= form.hidden_field :question_id, value: question_id %>
         <p>
           <%= form.label :answer %><br>
-          <%= form.select :answer, options_for_select(Answer::DEFAULT_ANSWER), { prompt: true, selected: '3' }, required: true, class: 'input-field' %>
+          <%= form.select :answer, options_for_select(Answer::DEFAULT_ANSWER),
+              { prompt: true, selected: '3' },
+              required: true, class: 'input-field' %>
         </p>
         <%= form.label :comment %><br>
-        <%= form.text_area :comment, data: { length:120 }, required: true, id: "comment" %>
+        <%= form.text_area :comment, data: { length:120 },
+            required: true, id: "comment" %>
         </p>
         <p>
           <%= form.submit 'Send Answer', class: 'waves-effect waves-light btn'%>
@@ -18,5 +21,5 @@
       </div>
     </div>
   </div>
-</div>  
+</div>
 <%= javascript_include_tag "form_validator.js" %>

@@ -6,8 +6,8 @@ class Checklist < ApplicationRecord
   
   validates :title, presence: true, length: { in: 1..40 }, uniqueness: true
   validates :description, presence: true
-  validates :publish, default: false
-  
+  validates :public, default: false
+
   # Set up the number of displayed Checklist items per page
   self.per_page = 10
   
@@ -16,6 +16,6 @@ class Checklist < ApplicationRecord
     questions.count
   end
 
-  scope :published, -> { where(publish: true) }
+  scope :published, -> { where(public: true) }
 
 end

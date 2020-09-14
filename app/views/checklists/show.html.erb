@@ -13,7 +13,7 @@
         <hr />
         <% @checklist.questions.any?  do %>
         <ul class="card-body">
-          <span class="card-title"><%= questions_title(@checklist.count_questions) %></span>
+          <span class="card-title center"><%= get_questions_title(@checklist.count_questions) %></span>
           <%= render @checklist.questions %>
         </ul>
         <% end %>
@@ -25,8 +25,8 @@
             class: 'waves-effect waves-light btn red darken-1' %>
         <%= link_to 'All Checklists', checklists_path, class: 'waves-effect waves-light btn teal lighten-2'%>
         <label>
-          <input type="checkbox" name="checkbox" class="filled-in" <%= checked_checkbox %> />
-          <span><%= publish_name %></span>
+          <input type="checkbox" name="checkbox" class="filled-in" <%= get_checkbox_style(@checklist.public) %> />
+          <span><%= get_public_name(@checklist.public) %></span>
         </label>
       </div>
     </div>

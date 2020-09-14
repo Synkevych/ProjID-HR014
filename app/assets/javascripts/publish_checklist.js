@@ -16,7 +16,7 @@ $(document).ready(function () {
         'X-CSRF-Token': document.getElementsByName('csrf-token')[0].content
       },
       data: {
-        'checklist[publish]': checked
+        'checklist[public]': checked
       },
       error: function (jqXHR) {
         if (jqXHR.status === 422) {

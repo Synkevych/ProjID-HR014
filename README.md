@@ -30,9 +30,11 @@ Create new form with dinamic question field, view you checklist. Register to thi
 
 A few of the things you can do with RubyForms:
 
-* Create new form
-* Register to app
-* Create audits page
+* Register to app or login 
+* Create new checklist form with unlimited questions
+* If your survey form is ready, publish it
+* Find the required survey among the published survey forms and create forms with answers
+* Answer all questions in the survey and save your result
 
 ## Getting started
 
