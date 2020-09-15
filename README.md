@@ -37,7 +37,7 @@ A few of the things you can do with RubyForms:
 ![Checklist show page](public/img/checklists_show.png)
 * Find the required survey among the published survey forms and create forms with answers
 * Answer all questions in the survey and save your result
-![Audit edit page](public/img/audits_edit.png)
+![Audit edit page](public/img/audits_new.png)
 * View all your answers and questions in the survey
 ![Audit show page](public/img/audits_show.png)
 * View all your Audits
