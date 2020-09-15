@@ -9,15 +9,19 @@
     <table class="responsive nowrap table table-hover dataTable no-footer dtr-inline" data-sort="true" id="dttb" role="grid">
       <thead>
         <tr role="row">
+          <th></th>
           <th data-data="title" class="sorting center" colspan="5" aria-label="Title: activate to sort column ascending">Title</th>
-          <th data-data="body" class="sorting center" colspan="5" aria-label="Body: activate to sort column ascending" aria-sort="descending">Action</th>
+          <th data-data="body" class="sorting center" colspan="2" aria-label="Body: activate to sort column ascending" aria-sort="descending">Action</th>
         </tr>
       </thead>
       <tbody>
-        <% @checklists.each do |checklist| %>
+        <% @checklists.each_with_index do |checklist, i| %>
           <tr class="odd">
+            <td valign="top" colspan="1" class="dataTables_empty">
+              <b><%= get_row_number(@checklists.current_page, i) %><b>
+            </td> 
             <td valign="top" colspan="5" class="dataTables_empty"><b><%= link_to checklist.title, checklist, title: "Click to show more information" %><b></td>
-            <td valign="top" colspan="5" class="dataTables_empty"><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td valign="top" colspan="2" class="dataTables_empty"><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>

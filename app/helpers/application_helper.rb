@@ -8,4 +8,12 @@ module ApplicationHelper
     end
     string << " to " << (current_page*10).to_s << " of " << total_pages.to_s << " entries"
   end
+  def get_row_number(page, i)
+    i = i + 1
+    if page >= 1
+      ( page * 10 - 10 ) + i
+    else
+      page *   i
+    end
+  end
 end
