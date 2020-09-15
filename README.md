@@ -5,10 +5,10 @@
   </a>
 </p>
 <br/>
-<img src="public/img/checklists.png"/>
+<img src="public/img/checklists_index.png"/>
 <br/>
 <p align="center">
-  RubyForms easy form creation and answers to them. Built with RoR framework.
+  RubyForms easy form creation and answers to them. Built with RoR framework, tested with RSpec, deployed to Heroku.
 </p>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -24,17 +24,25 @@
 
 ## Introduction
 
-Create new form with dinamic question field, view you checklist. Register to this app using devise gem.
+Create a new form with a dynamic question field, publish it for other users, answer these questions with comment and save them. View your answer on the show page and share the link with your result to other users.
 
 ## Features
 
 A few of the things you can do with RubyForms:
 
-* Register to app or login 
+* Register to app or login
+![Log In page](public/img/login.png)
 * Create new checklist form with unlimited questions
-* If your survey form is ready, publish it
+* If your survey form is ready, publish it  
+![Checklist show page](public/img/checklists_show.png)
 * Find the required survey among the published survey forms and create forms with answers
 * Answer all questions in the survey and save your result
+![Audit edit page](public/img/audits_edit.png)
+* View all your answers and questions in the survey
+![Audit show page](public/img/audits_show.png)
+* View all your Audits
+![Audit index page](public/img/audits_index.png)  
+* Deployed to heroku and available [online](https://quiet-plains-51299.herokuapp.com/)
 
 ## Getting started
 
