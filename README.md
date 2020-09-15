@@ -5,8 +5,12 @@
   </a>
 </p>
 <br/>
-<img src="public/img/checklists_index.png"/>
-<br/>
+<a href="https://codecov.io/gh/Synkevych/ProjID-HR014">
+  <img src="https://codecov.io/gh/Synkevych/ProjID-HR014/branch/master/graph/badge.svg?token=ZWBWFMZDHC" />
+</a>
+<a href="https://travis-ci.com/Synkevych/ProjID-HR014">
+  <img src="https://travis-ci.com/Synkevych/ProjID-HR014.svg?token=YqQkvEJseUFsPXjFZnsZ&branch=master" />
+</a>
 <p align="center">
   RubyForms easy form creation and answers to them. Built with RoR framework, tested with RSpec, deployed to Heroku.
 </p>
@@ -31,8 +35,8 @@ Create a new form with a dynamic question field, publish it for other users, ans
 A few of the things you can do with RubyForms:
 
 * Register to app or login
-![Log In page](public/img/login.png)
 * Create new checklist form with unlimited questions
+![Log In page](public/img/login.png)
 * If your survey form is ready, publish it  
 ![Checklist show page](public/img/checklists_show.png)
 * Find the required survey among the published survey forms and create forms with answers
