@@ -19,13 +19,48 @@ RSpec.describe "Answers", type: :request do
   end
   
   describe "POST #create" do
-    let(:answer_params) do
-      { answer: 'Yes', comment: 'Some comment here for test', 
-        question_id: checklist.questions.first.id }
-      end 
-    subject { post checklist_audit_answers_path(checklist, audit, answer: answer_params) }
-
+    subject { post checklist_audit_answers_path(checklist, audit, answer: answer_params, format: :js) }
+    
     context "correct params are passed" do
+      let(:answer_params) do
+        { answer: 'Yes', comment: 'Some comment here for test', 
+          question_id: checklist.questions.first.id }
+        end 
+
+      it 'has successful status' do
+        subject
+        expect(response.status).to eq(200)
+      end
+      
+      it 'sets successful flash' do
+        subject
+        flash[:success].should =~ /Your answer has been saved./
+      end
+      
+      it 'adds new object to db' do
+        expect{subject}.to change(Answer, :count).by(1)  
+      end
+    end
+    
+    context "correct params are passed" do
+      let(:answer_params) do
+        { answer: 'Yes', comment: '', 
+          question_id: checklist.questions.first.id }
+        end 
+
+      it 'has successful status' do
+        subject
+        expect(response.status).to eq(422)
+      end
+      
+      it 'sets error flash' do
+        subject
+         expect(flash[:error]).to include("Comment is too short (minimum is 12 characters)")
+      end
+      
+      it 'adds new object to db' do
+        expect{subject}.to change(Answer, :count).by(0)  
+      end
     end
   end
 

@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
       flash[:success] = "Question was successfully created."
     else
       flash[:error] = @question.errors.full_messages.join("\n")
-      render :new
+      render :new, status: 422
     end
   end
 

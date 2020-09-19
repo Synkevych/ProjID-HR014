@@ -12,13 +12,15 @@ $secondary-color: color("teal", "lighten-2") !default;
   padding-top: 0;
 }
 
-
 select {
     display: block;
 }
 
-
 .card .card-action label {
   margin-left: 0.5em;
   vertical-align: text-top;
+}
+
+.card .login-wrapper, .card-content, .material-table{
+  margin-top: 2em;
 }

@@ -11,36 +11,36 @@ class AuditsController < ApplicationController
       .paginate(page: params[:page])
   end
   
-  # GET /audits/1
+  # GET checklists/1/audits/1
   def show
   end
   
-  # GET /audits/new
+  # GET checklists/1/audits/new
   def new
     @show_answer_form = true
     @audit = @checklist.audits.create
   end
   
-  # GET /audits/1/edit
+  # GET checklists/1/audits/1/edit
   def edit; end
 
-  # PATCH/PUT /audits/1
+  # PATCH/PUT checklists/1/audits/1
   def update
     if @audit.update(audit_params)
       flash[:success] = 'Audit was successfully updated.'
       redirect_to checklist_audit_path(@checklist, @audit)
     else
-      flash[:success] = 'With updateng audit has an error.'
+      flash[:success] = 'With updating audit has an error.'
       render :edit
     end
     # redirect_to @audit
   end
 
-  # DELETE /audits/1
+  # DELETE checklists/1/audits/1
   def destroy
     if @audit.destroy
       redirect_to audits_path
-      flash[:error] = 'Audit was successfully destroyed.' 
+      flash[:success] = 'Audit was successfully destroyed.' 
     else
       # respond_to :js
       flash[:error] = "Audit has not been deleted! Something went wrong"
