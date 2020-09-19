@@ -12,12 +12,12 @@ RSpec.describe "Questions", type: :request do
 # Create 
 
   describe "POST #create" do
-    let(:question_params) do
-      { title: "How you create this app", description: "What technology do they use"}
-    end
-    subject { post checklist_questions_path(checklist, question: question_params) }
-
+    
     context "correct params are passed" do
+      subject { post checklist_questions_path(checklist, question: question_params) }
+      let(:question_params) do
+        { title: "How you create this app", description: "What technology do they use"}
+      end
 
       it 'has successful status' do
         subject
@@ -38,5 +38,48 @@ RSpec.describe "Questions", type: :request do
         expect(response.status).to redirect_to(checklist_path(Checklist.last))
       end
     end
+    
+    context "incorrect params in title are passed" do
+      subject { post checklist_questions_path(checklist, question: question_params, format: :js) }
+      let(:question_params) do
+        { title: "Short title", description: "What technology do they use"}
+      end
+
+      it 'has successful status' do
+        subject
+        expect(response.status).to eq(422)
+      end
+      
+      it 'sets successful flash' do
+        subject
+        expect(controller).to set_flash[:error].to("Title is too short (minimum is 12 characters)")
+      end
+      
+      it 'not adds new object to db' do
+        expect{subject}.to change(Question, :count).by(0)  
+      end
+    end
+    
+    context "incorrect params in description are passed" do
+      subject { post checklist_questions_path(checklist, question: question_params, format: :js) }
+      let(:question_params) do
+        { title: "How you create this app", description: ""}
+      end
+
+      it 'has successful status' do
+        subject
+        expect(response.status).to eq(422)
+      end
+      
+      it 'sets successful flash' do
+        subject
+        expect(controller).to set_flash[:error].to("Description can't be blank")
+      end
+      
+      it 'not adds new object to db' do
+        expect{subject}.to change(Question, :count).by(0)  
+      end
+    end
+
   end
 end

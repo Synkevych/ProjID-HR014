@@ -29,7 +29,7 @@ class ChecklistsController < ApplicationController
       redirect_to checklist_path(@checklist)
     else
       flash[:error] = @checklist.errors.full_messages.join("\n")
-      render :new
+      render :new, status: 422
     end
   end
 

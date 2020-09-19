@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
       flash[:success] = "Your answer has been saved."
     else
       flash[:error] = @answer.errors.full_messages.join("\n")
-      render :new
+      render :new, status: 422
     end
   end
 
@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
       flash[:success] = 'Answer was successfully updated.'
     else
       flash[:error] = @checklist.errors.full_messages.join("\n")
-      render :new 
+      render :new, status: 422
     end
   end
   

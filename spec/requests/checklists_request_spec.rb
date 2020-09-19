@@ -95,29 +95,28 @@ RSpec.describe ChecklistsController, type: :request do
     end
   end
 
-# Create
-
+  # Create
+  
   describe "POST #create" do
     let(:checklist_params) do 
        { title: 'Some title with more that 14 characters', description: 'Some description' }
-      end
-
+    end
+    
     subject { post checklists_path(checklist: checklist_params) }
     
     context "not authorized user" do
       before(:each) do 
-        sign_out user
+        sign_out current_user
         subject
       end
-
+      
       it "has status unauthorized" do
         expect(response.status).to eq(302)
         expect(response.body).to redirect_to(new_user_session_path)
       end
     end
-
+    
     context 'correct params are passed' do
-
       it 'has successful status' do
         subject
         expect(response.status).to eq(302)
@@ -125,7 +124,7 @@ RSpec.describe ChecklistsController, type: :request do
 
       it 'sets successful flash' do
         subject
-        flash[:success].should =~ /Checklist was successfully created./
+        expect(flash[:success]).to include("Checklist was successfully created.")
       end
 
       it 'adds new object to db' do
@@ -136,6 +135,25 @@ RSpec.describe ChecklistsController, type: :request do
         expect(response.status).to redirect_to(checklist_path(Checklist.last))
       end
     end
+    
+    context 'incorrect params are passed' do
+      let!(:checklist_params) do 
+       { title: 'Short title', description: '' }
+      end
+      it 'has unprocessable status' do
+        subject
+        expect(response.status).to eq(422)
+      end
+
+      it 'sets correct flash' do
+        subject
+        expect(flash[:error]).to include("Description can't be blank")
+      end
+
+      it 'not adds new object to db' do
+        expect{subject}.to change(Checklist, :count).by(0)  
+      end
+    end
   end
 
 # Show
@@ -144,7 +162,7 @@ RSpec.describe ChecklistsController, type: :request do
     subject { get checklist_path(checklist) }
     before(:each) { subject }
 
-    context "successful request - public board" do
+    context "successful request" do
       let(:checklist) { create(:checklist) }
       it "returns successful response  and renders show page" do
         expect(response.status).to render_template(:show)
