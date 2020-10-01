@@ -11,12 +11,14 @@
 <a href="https://travis-ci.com/Synkevych/ProjID-HR014">
   <img src="https://travis-ci.com/Synkevych/ProjID-HR014.svg?token=YqQkvEJseUFsPXjFZnsZ&branch=master" />
 </a>
+<a href="http://hits.dwyl.com/Synkevych/nested_rails_forms">
+  <img src="http://hits.dwyl.com/Synkevych/nested_rails_forms.svg" />
+</a>
+<br/>
 <p align="center">
   RubyForms easy form creation and answers to them. Built with RoR framework, tested with RSpec, deployed to Heroku.
 </p>
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -28,25 +30,24 @@
 
 ## Introduction
 
-Create a new form with a dynamic question field, publish it for other users, answer these questions with comment and save them. View your answer on the show page and share the link with your result to other users.
+Create a new form with a dynamic question field, publish it for other users, answer these questions with comment and save them. View your answer on the show page and share the link with your result to other users. Deployed to Heroku and available [online](https://quiet-plains-51299.herokuapp.com/).
 
 ## Features
 
 A few of the things you can do with RubyForms:
 
-* Register to app or login
-* Create new checklist form with unlimited questions
+* Register to app or login  
 ![Log In page](public/img/login.png)
-* If your survey form is ready, publish it  
+* Create new checklist form with unlimited questions  
 ![Checklist show page](public/img/checklists_show.png)
+* If your survey form is ready, publish it (click on the checkbox with the name "Unpublished")
 * Find the required survey among the published survey forms and create forms with answers
-* Answer all questions in the survey and save your result
+* Answer all questions in the survey and save your result  
 ![Audit edit page](public/img/audits_new.png)
-* View all your answers and questions in the survey
+* View all your questions and answers in the survey  
 ![Audit show page](public/img/audits_show.png)
-* View all your Audits
-![Audit index page](public/img/audits_index.png)  
-* Deployed to heroku and available [online](https://quiet-plains-51299.herokuapp.com/)
+* View all your Audits  
+![Audit index page](public/img/audits_index.png)
 
 ## Getting started
 

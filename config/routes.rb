@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   
   resources :audits, only: [:index]
   devise_for :users
+  
+  # If no route matches
+  # match ":url" => "application#redirect_user", :constraints => { :url => /.*/ }
+  # match '*path', via: :all, to: redirect('error/404')
+  get '*path', to: 'errors#error_404', via: :all
 end

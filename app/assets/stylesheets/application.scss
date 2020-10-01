@@ -7,6 +7,7 @@ $secondary-color: color("teal", "lighten-2") !default;
 
 @import "materialize/extras/nouislider";
 @import "checklists";
+@import "errors";
 
 .page-footer{
   padding-top: 0;
