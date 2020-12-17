@@ -77,6 +77,8 @@ group :development, :test do
   gem 'codecov', '~> 0.1.17', require: false
   # Strategies for cleaning databases in Ruby. Can be used to ensure a clean state for testing.
   gem 'database_cleaner', '~> 1.8.5'
+  # Capybara is an integration testing tool for rack based web applications. It simulates how a user would interact with a website
+  gem 'capybara'
 end
 
 group :development do
